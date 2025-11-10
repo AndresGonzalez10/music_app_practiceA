@@ -7,6 +7,6 @@ import { Search } from "../search/search";
   templateUrl: './nanv-bar.html',
   styleUrl: './nanv-bar.css',
 })
-export class NanvBar {
+export class NanvBarContainer {
 
 }
