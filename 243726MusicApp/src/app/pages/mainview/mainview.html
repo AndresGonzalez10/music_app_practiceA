@@ -3,12 +3,33 @@
   <app-nanv-bar></app-nanv-bar>
 
   <main class="content-area">
+    
     <h2>Albumes</h2>
-    <app-image-area></app-image-area>
+    <div class="horizontal-scroll-container" *ngIf="albums$ | async as results">
+      <app-image-area 
+        *ngFor="let album of results.albums.items"
+        [imageUrl]="album.images[0].url" 
+        [title]="album.name"
+        [artist]="album.artists[0].name">
+      </app-image-area>
+    </div>
+    
     <h2>Artistas</h2>
-    <app-image-artis></app-image-artis>
+    <div class="horizontal-scroll-container">
+      <app-image-artis></app-image-artis>
+      <app-image-artis></app-image-artis>
+      <app-image-artis></app-image-artis>
+      <app-image-artis></app-image-artis>
+    </div>
+    
     <h2>Canciones</h2>
-    <app-songs2></app-songs2>
+    <div class="vertical-list-container">
+      <app-songs2></app-songs2>
+      <app-songs2></app-songs2>
+      <app-songs2></app-songs2>
+      <app-songs2></app-songs2>
+    </div>
+
   </main>
 
 </div>

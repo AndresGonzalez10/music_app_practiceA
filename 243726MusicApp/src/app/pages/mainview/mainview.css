@@ -11,3 +11,22 @@
   padding: 24px 32px;
   background-color: #1a1a1a;
 }
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row; 
+  overflow-x: auto;  
+  gap: 20px;          
+  padding-bottom: 10px; 
+}
+
+.vertical-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+:host ::ng-deep .horizontal-scroll-container app-image-area,
+:host ::ng-deep .horizontal-scroll-container app-image-artis {
+  flex-shrink: 0;
+}
