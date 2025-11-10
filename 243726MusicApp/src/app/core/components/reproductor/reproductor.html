@@ -1,1 +1,20 @@
-<p>reproductor works!</p>
+<div class="deploy-tab" [hidden]="isPlayerVisible" (click)="showPlayer()">
+  <img src="/Assets/Music.png" alt="Mostrar" class="deploy-icon">
+</div>
+<aside class="player-container" [class.hidden]="!isPlayerVisible">
+  
+  <div class="player-header">
+    <img src="/Assets/Back Arrow.png" alt="Ocultar" class="header-icon" (click)="hidePlayer()">
+    <img src="/Assets/Full Screen.png" alt="Pantalla Completa" class="header-icon">
+  </div>
+
+  <app-image-reproductor></app-image-reproductor>
+  <app-progres-bar></app-progres-bar>
+
+  <div class="playback-controls">
+    <img src="/Assets/End.png" alt="Anterior" class="control-icon">
+    <img src="/Assets/play.png" alt="Play" class="control-icon play-icon">
+    <img src="/Assets/next.png" alt="Siguiente" class="control-icon">
+  </div>
+  
+</aside>

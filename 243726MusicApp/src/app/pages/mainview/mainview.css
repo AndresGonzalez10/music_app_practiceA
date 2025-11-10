@@ -1,15 +1,13 @@
-body{
-    font-family: 'Roboto', sans-serif;
-     background-color: #1a1a1a;
-}
-
 .app-layout {
   display: grid;
   grid-template-columns: auto 1fr;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .content-area {
   overflow-y: auto;
   padding: 24px 32px;
+  background-color: #1a1a1a;
 }

@@ -1,15 +1,20 @@
+<!-- Layout principal (2 columnas) -->
 <div class="app-layout">
   
+  <!-- Columna 1: Izquierda -->
   <app-nanv-bar></app-nanv-bar>
 
+  <!-- Columna 2: Centro (con scroll) -->
   <main class="content-area">
     <h2>Albumes</h2>
     <app-image-area></app-image-area>
-    
     <h2>Playlists</h2>
     <app-image-artis></app-image-artis>
-    
     <h2>Canciones</h2>
-    </main>
+  </main>
 
 </div>
+
+<!-- El reproductor flotante. 
+     Se coloca aquí, fuera del grid principal. -->
+<app-reproductor></app-reproductor>

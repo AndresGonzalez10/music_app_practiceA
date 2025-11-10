@@ -1,0 +1,53 @@
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.timestamp {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.progress-slider {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 16px;
+}
+
+.progress-slider::-webkit-slider-runnable-track {
+  background-color: #f1f1f1;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  margin-top: -6px;
+}
+
+.progress-slider::-moz-range-track {
+  background-color: #f1f1f1;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+}

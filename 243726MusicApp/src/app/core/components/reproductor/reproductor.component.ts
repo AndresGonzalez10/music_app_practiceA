@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { ImageReproductorComponent } from '../image-reproductor/image-reproductor.component';
-import { ProgresBarComponent } from '../progres-bar/progres-bar.component';
+import { ImageReproductor } from "../image-reproductor/image-reproductor";
+import { ProgresBar } from "../progres-bar/progres-bar";
 
 @Component({
   selector: 'app-reproductor',
-  imports: [ImageReproductorComponent, ProgresBarComponent],
+  imports: [ImageReproductor, ProgresBar],
   templateUrl: './reproductor.html',
   styleUrl: './reproductor.css',
 })
-export class Reproductor {
+export class ReproductorComponent {
+
 public isPlayerVisible: boolean = true;
 
   hidePlayer() {
