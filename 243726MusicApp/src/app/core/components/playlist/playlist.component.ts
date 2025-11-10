@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { SongsComponent } from '../songsc/songsc.component';
+import { Songs } from "../songsc/songsc";
 
 @Component({
   selector: 'app-playlist',
-  imports: [SongsComponent],
+  imports: [Songs],
   templateUrl: './playlist.html',
   styleUrl: './playlist.css',
 })
-export class Playlist {
+export class PlaylistComponent {
 
 }
