@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { Search } from "../search/search";
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-nanv-bar',
-  imports: [Search],
+  
+  standalone: true,
+  
+  imports: [CommonModule, SearchComponent],
+  
   templateUrl: './nanv-bar.html',
   styleUrl: './nanv-bar.css',
 })
-export class NanvBarContainer {
+
+export class NanvBar {
 
 }

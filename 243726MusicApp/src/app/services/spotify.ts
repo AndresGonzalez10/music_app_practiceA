@@ -50,49 +50,44 @@ export class SpotifyService {
     ) as Observable<string>;
   }
 
+  // Mantenemos tus funciones anteriores
   public searchAlbums(query: string): Observable<any> {
-    
     return this.getValidToken().pipe(
       switchMap(token => {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        });
-        const params = new HttpParams()
-          .set('q', query)
-          .set('type', 'album')
-          .set('limit', '10'); 
-
+        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+        const params = new HttpParams().set('q', query).set('type', 'album').set('limit', '10'); 
         return this.http.get('https://api.spotify.com/v1/search', { headers, params });
       })
     );
   }
-
-  /**
-   * @param query
-   */
   public searchArtists(query: string): Observable<any> {
-    
     return this.getValidToken().pipe(
       switchMap(token => {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        });
-        
-        const params = new HttpParams()
-          .set('q', query)
-          .set('type', 'artist') 
-          .set('limit', '10'); 
-
+        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+        const params = new HttpParams().set('q', query).set('type', 'artist').set('limit', '10'); 
+        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
+      })
+    );
+  }
+  public searchTracks(query: string): Observable<any> {
+    return this.getValidToken().pipe(
+      switchMap(token => {
+        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+        const params = new HttpParams().set('q', query).set('type', 'track').set('limit', '10'); 
         return this.http.get('https://api.spotify.com/v1/search', { headers, params });
       })
     );
   }
 
   /**
-   * @param query
+   * NUEVA FUNCIÓN: Busca todo (álbumes, artistas y tracks)
    */
-  public searchTracks(query: string): Observable<any> {
+  public searchAll(query: string): Observable<any> {
     
+    if (!query) {
+      return of({ albums: null, artists: null, tracks: null });
+    }
+
     return this.getValidToken().pipe(
       switchMap(token => {
         const headers = new HttpHeaders({
@@ -101,8 +96,8 @@ export class SpotifyService {
         
         const params = new HttpParams()
           .set('q', query)
-          .set('type', 'track') 
-          .set('limit', '10'); 
+          .set('type', 'album,artist,track')
+          .set('limit', '8');
 
         return this.http.get('https://api.spotify.com/v1/search', { headers, params });
       })

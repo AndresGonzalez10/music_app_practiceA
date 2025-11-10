@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Search {
+export class SearchService {
+
+  private searchTerm = new BehaviorSubject<string>('');
   
+  public searchTerm$: Observable<string> = this.searchTerm.asObservable();
+
+  public setSearchTerm(term: string): void {
+    this.searchTerm.next(term);
+  }
 }
