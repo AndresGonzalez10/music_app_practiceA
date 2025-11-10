@@ -26,11 +26,13 @@ export class Mainview implements OnInit {
   
   public albums$: Observable<any> | undefined;
   public artists$: Observable<any> | undefined;
+  public tracks$: Observable<any> | undefined;
 
   constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {
-    this.albums$ = this.spotifyService.searchAlbums('Dua Lipa');
-    this.artists$ = this.spotifyService.searchArtists('Dua Lipa');
+    this.albums$ = this.spotifyService.searchAlbums('');
+    this.artists$ = this.spotifyService.searchArtists('');
+    this.tracks$ = this.spotifyService.searchTracks('');
   }
 }

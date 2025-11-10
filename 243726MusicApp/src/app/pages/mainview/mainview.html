@@ -1,37 +1,39 @@
 <div class="app-layout">
-  
   <app-nanv-bar></app-nanv-bar>
 
   <main class="content-area">
-    
     <h2>Albumes</h2>
     <div class="horizontal-scroll-container" *ngIf="albums$ | async as results">
-      <app-image-area 
+      <app-image-area
         *ngFor="let album of results.albums.items"
-        [imageUrl]="album.images[0].url" 
+        [imageUrl]="album.images[0].url"
         [title]="album.name"
-        [artist]="album.artists[0].name">
+        [artist]="album.artists[0].name"
+      >
       </app-image-area>
     </div>
-    
+
     <h2>Artistas</h2>
     <div class="horizontal-scroll-container" *ngIf="artists$ | async as results">
-       <app-image-artis 
+      <app-image-artis
         *ngFor="let artist of results.artists.items"
         [imageUrl]="artist.images[0]?.url || ''"
-        [artistName]="artist.name">
+        [artistName]="artist.name"
+      >
       </app-image-artis>
     </div>
-    
+
     <h2>Canciones</h2>
-    <div class="vertical-list-container">
-      <app-songs2></app-songs2>
-      <app-songs2></app-songs2>
-      <app-songs2></app-songs2>
-      <app-songs2></app-songs2>
+    <div class="vertical-list-container" *ngIf="tracks$ | async as results">
+      <app-songs2
+        *ngFor="let track of results.tracks.items"
+        [imageUrl]="track.album.images[0]?.url || ''"
+        [songName]="track.name"
+        [artistName]="track.artists[0].name"
+        [durationMs]="track.duration_ms"
+      >
+      </app-songs2>
     </div>
-
   </main>
-
 </div>
 <app-reproductor></app-reproductor>
