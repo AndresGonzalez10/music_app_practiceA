@@ -1,1 +1,27 @@
-<p>reproductor-view works!</p>
+<div class="player-view-container">
+  
+  <header class="player-view-header">
+    <a href="/"><img src="/Assets/Back Arrow.png" alt="Ocultar" class="header-icon-back"></a>
+    <app-search></app-search>
+  </header>
+
+  <div class="player-view-body">
+    
+    <div class="player-area">
+      
+      <app-image-reproductor></app-image-reproductor>
+      <app-progres-bar></app-progres-bar>
+
+      <div class="playback-controls">
+        <img src="/Assets/End.png" alt="Anterior" class="control-icon">
+        <img src="/Assets/play.png" alt="Play" class="control-icon play-icon">
+        <img src="/Assets/next.png" alt="Siguiente" class="control-icon">
+      </div>
+    </div>
+
+    <div class="playlist-area">
+      <app-playlist></app-playlist>
+    </div>
+
+  </div>
+</div>
