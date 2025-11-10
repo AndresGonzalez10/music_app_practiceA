@@ -6,7 +6,6 @@ import { PlayerService } from '../../../services/player-service';
   selector: 'app-songs2',
   standalone: true,
   imports: [CommonModule],
-  // Se añade (click)="onPlay()"
   template: `
     <div class="song-item-container" (click)="onPlay()">
       <div class="song-artwork-placeholder">
@@ -41,7 +40,6 @@ export class Songs2Component {
     const seconds = totalSeconds % 60;
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
-
 
   onPlay(): void {
     if (this.trackData) {

@@ -10,7 +10,9 @@
         *ngFor="let album of albums.items"
         [imageUrl]="album.images[0].url" 
         [title]="album.name"
-        [artist]="album.artists[0].name">
+        [artist]="album.artists[0].name"
+        [albumData]="album"
+        (albumClick)="onAlbumClick($event)">
       </app-image-area>
     </div>
     

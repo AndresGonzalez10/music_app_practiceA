@@ -10,9 +10,9 @@ import { PlaylistComponent } from '../playlist/playlist.component';
   selector: 'app-reproductor',
   standalone: true,
   imports: [
-    CommonModule, 
-    ImageReproductorComponent, 
-    ProgresBarComponent , 
+    CommonModule,
+    ImageReproductorComponent,
+    ProgresBarComponent,
     PlaylistComponent
   ],
   templateUrl: './reproductor.html',
@@ -29,12 +29,11 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   
   private playerSubscription: Subscription | undefined;
 
-  // Propiedades que faltaban en tu archivo:
   public cardImageUrl: string = '';
   public cardTitle: string = 'Song Name';
   public cardArtist: string = 'Artist Name';
   
-  public isPlayerVisible: boolean = true; 
+  public isPlayerVisible: boolean = true;
 
   constructor(
     private playerService: PlayerService,
@@ -112,4 +111,14 @@ export class ReproductorComponent implements OnInit, OnDestroy {
 
   hidePlayer() { this.isPlayerVisible = false; }
   showPlayer() { this.isPlayerVisible = true; }
+
+  playPrevious(): void {
+    // TODO: Implement previous track functionality
+    console.log('Previous track');
+  }
+
+  playNext(): void {
+    // TODO: Implement next track functionality
+    console.log('Next track');
+  }
 }

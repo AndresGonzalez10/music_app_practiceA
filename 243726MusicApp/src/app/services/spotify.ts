@@ -50,7 +50,6 @@ export class SpotifyService {
     ) as Observable<string>;
   }
 
-  // Mantenemos tus funciones anteriores
   public searchAlbums(query: string): Observable<any> {
     return this.getValidToken().pipe(
       switchMap(token => {
@@ -79,9 +78,6 @@ export class SpotifyService {
     );
   }
 
-  /**
-   * NUEVA FUNCIÓN: Busca todo (álbumes, artistas y tracks)
-   */
   public searchAll(query: string): Observable<any> {
     
     if (!query) {
@@ -100,6 +96,18 @@ export class SpotifyService {
           .set('limit', '8');
 
         return this.http.get('https://api.spotify.com/v1/search', { headers, params });
+      })
+    );
+  }
+
+  public getAlbumTracks(albumId: string): Observable<any> {
+    return this.getValidToken().pipe(
+      switchMap(token => {
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+        });
+        
+        return this.http.get(`https://api.spotify.com/v1/albums/${albumId}/tracks`, { headers });
       })
     );
   }

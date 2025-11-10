@@ -14,7 +14,7 @@
 
     <div class="player-header">
       <img src="/Assets/Back Arrow.png" alt="Ocultar" class="header-icon" (click)="hidePlayer()">
-      <img src="/Assets/Full Screen.png" alt="Pantalla Completa" class="header-icon">
+      <a href="/reproductor"><img src="/Assets/Full Screen.png" alt="Pantalla Completa" class="header-icon"></a>
     </div>
 
     <app-image-reproductor 
@@ -35,15 +35,15 @@
     </app-progres-bar>
 
     <div class="playback-controls">
-      <img src="/Assets/End.png" alt="Anterior" class="control-icon">
+      <img src="/Assets/End.png" alt="Anterior" class="control-icon" (click)="playPrevious()">
       
       <img 
-        [src]="isPlaying ? '/Assets/pause.png' : '/Assets/play.png'" 
+        [src]="isPlaying ? '/Assets/play2.png' : '/Assets/play.png'" 
         alt="Play/Pause" 
         class="control-icon play-icon"
         (click)="togglePlayPause()">
       
-      <img src="/Assets/next.png" alt="Siguiente" class="control-icon">
+      <img src="/Assets/next.png" alt="Siguiente" class="control-icon" (click)="playNext()">
     </div>
   </div>
 
