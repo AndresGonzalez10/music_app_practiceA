@@ -13,7 +13,6 @@
   transition: transform 0.3s ease-out;
   transform: translateX(0);
   box-sizing: border-box;
-  
   display: flex;
   flex-direction: column;
 }
@@ -50,13 +49,7 @@
   flex-direction: column;
   gap: 20px;
   flex-shrink: 0;
-}
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: #70619a;
-  flex-shrink: 0;
+  align-items: center; 
 }
 
 .player-playlist-area {
@@ -71,22 +64,35 @@
   align-items: center;
 }
 
-.header-icon {
+.header-icon1 {
   width: 24px;
   height: 24px;
   opacity: 0.7;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  margin-right: 70px;
 }
 
-.header-icon:hover {
+.header-icon1:hover {
+  opacity: 1;
+}
+
+.header-icon2 {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  margin-left: 70px;
+}
+
+.header-icon2:hover {
   opacity: 1;
 }
 
 :host ::ng-deep app-image-reproductor,
 :host ::ng-deep app-progres-bar {
   display: block;
-  width: 100%;
 }
 
 .playback-controls {
