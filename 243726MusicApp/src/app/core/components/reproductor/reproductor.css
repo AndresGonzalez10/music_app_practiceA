@@ -13,6 +13,8 @@
   transition: transform 0.3s ease-out;
   transform: translateX(0);
   box-sizing: border-box;
+  
+  /* CLAVE: El contenedor es una columna flex */
   display: flex;
   flex-direction: column;
 }
@@ -43,56 +45,72 @@
   filter: brightness(0) invert(1);
 }
 
+/* 1. SECCIÓN SUPERIOR */
 .player-main-content {
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex-shrink: 0;
-  align-items: center; 
+  flex-shrink: 0; /* No se encoge */
+  align-items: center;
 }
 
+/* DIVISOR */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #70619a;
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* 2. SECCIÓN INFERIOR (LISTA) */
 .player-playlist-area {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 16px 24px;
+  flex-grow: 1; /* ¡Toma todo el espacio restante! */
+  overflow-y: auto; /* Añade scroll solo a esta área */
 }
 
+/* Estilos del resto de elementos */
 .player-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-.header-icon1 {
+.header-icon {
   width: 24px;
   height: 24px;
   opacity: 0.7;
   cursor: pointer;
   transition: opacity 0.2s ease;
-  margin-right: 70px;
 }
-
-.header-icon1:hover {
+.header-icon:hover {
   opacity: 1;
 }
 
-.header-icon2 {
-  width: 24px;
-  height: 24px;
-  opacity: 0.7;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-  margin-left: 70px;
+:host ::ng-deep app-image-reproductor {
+  display: block;
 }
 
-.header-icon2:hover {
-  opacity: 1;
-}
-
-:host ::ng-deep app-image-reproductor,
 :host ::ng-deep app-progres-bar {
   display: block;
+  width: 90%;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+}
+.song-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.song-artist {
+  font-size: 14px;
+  color: #b3b3b3;
 }
 
 .playback-controls {
@@ -110,11 +128,9 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .control-icon:hover {
   opacity: 1;
 }
-
 .play-icon {
   width: 56px;
   height: 56px;

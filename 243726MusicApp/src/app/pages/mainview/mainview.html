@@ -27,7 +27,7 @@
     <div class="vertical-list-container" *ngIf="tracks$ | async as tracks">
       <app-songs2 
         *ngFor="let track of tracks.items"
-        [imageUrl]="track.album.images[0]?.url || ''"
+        [trackData]="track" [imageUrl]="track.album.images[0]?.url || ''"
         [songName]="track.name"
         [artistName]="track.artists[0].name"
         [durationMs]="track.duration_ms">
@@ -35,6 +35,5 @@
     </div>
 
   </main>
-
-</div>
 <app-reproductor></app-reproductor>
+</div>
