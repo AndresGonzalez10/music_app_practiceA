@@ -17,7 +17,8 @@
   flex-direction: row; 
   overflow-x: auto;  
   gap: 20px;          
-  padding-bottom: 10px; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .vertical-list-container {

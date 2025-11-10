@@ -15,11 +15,12 @@
     </div>
     
     <h2>Artistas</h2>
-    <div class="horizontal-scroll-container">
-      <app-image-artis></app-image-artis>
-      <app-image-artis></app-image-artis>
-      <app-image-artis></app-image-artis>
-      <app-image-artis></app-image-artis>
+    <div class="horizontal-scroll-container" *ngIf="artists$ | async as results">
+       <app-image-artis 
+        *ngFor="let artist of results.artists.items"
+        [imageUrl]="artist.images[0]?.url || ''"
+        [artistName]="artist.name">
+      </app-image-artis>
     </div>
     
     <h2>Canciones</h2>

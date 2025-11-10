@@ -12,6 +12,7 @@
   transition: background-color 0.3s ease;
   cursor: pointer;
   text-align: center;
+  box-sizing: border-box; 
 }
 
 .artist-card-circular:hover {
@@ -55,6 +56,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 24px;
+  width: 100%; 
 }
 
 .artist-name {

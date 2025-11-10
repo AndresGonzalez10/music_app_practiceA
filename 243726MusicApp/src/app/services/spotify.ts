@@ -66,4 +66,25 @@ export class SpotifyService {
       })
     );
   }
+
+  /**
+   * @param query
+   */
+  public searchArtists(query: string): Observable<any> {
+    
+    return this.getValidToken().pipe(
+      switchMap(token => {
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+        });
+        
+        const params = new HttpParams()
+          .set('q', query)
+          .set('type', 'artist') 
+          .set('limit', '10'); 
+
+        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
+      })
+    );
+  }
 }
