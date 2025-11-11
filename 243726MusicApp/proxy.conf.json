@@ -1,0 +1,18 @@
+{
+  "/api/token": {
+    "target": "https://accounts.spotify.com/api/token",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/token": ""
+    }
+  },
+  "/api/v1": {
+    "target": "https://api.spotify.com/v1",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/v1": ""
+    }
+  }
+}

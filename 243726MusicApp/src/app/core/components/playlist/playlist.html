@@ -4,7 +4,7 @@
     <h2>Lista de Reproduccion</h2>
   </div>
 
-  <ul class="song-list" *ngIf="playlist$ | async as playlist">
+  <ul class ="song-list" *ngIf="playlist$ | async as playlist">
     <app-songs2
       *ngFor="let track of playlist"
       [trackData]="track"

@@ -59,7 +59,8 @@
               "buildTarget": "243726MusicApp:build:production"
             },
             "development": {
-              "buildTarget": "243726MusicApp:build:development"
+              "buildTarget": "243726MusicApp:build:development",
+              "proxyConfig": "proxy.conf.json" 
             }
           },
           "defaultConfiguration": "development"

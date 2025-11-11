@@ -61,7 +61,6 @@ export class Mainview {
           albumImageUrl: track.album.images[0].url,
           preview_url: track.preview_url,
           duration_ms: track.duration_ms,
-          spotifyData: track
         }));
 
         return [...localTracks, ...spotifyTracks];
@@ -80,8 +79,7 @@ export class Mainview {
               artistName: track.artists[0].name,
               albumImageUrl: album.images[0].url,
               preview_url: track.preview_url,
-              duration_ms: track.duration_ms,
-              spotifyData: track
+              duration_ms: track.duration_ms
             };
           });
 

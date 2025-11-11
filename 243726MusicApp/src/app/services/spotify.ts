@@ -15,8 +15,13 @@ export class SpotifyService {
   
   private clientId = '43ee895f2568414488c00bd8fd722ca8';
   private clientSecret = '53d60a801e0142579d19b8f75dd730d9';
-  private tokenUrl = 'https://accounts.spotify.com/api/token';
-  
+
+  // --- URLs Actualizadas a la API real ---
+  private tokenUrl = '/api/token'; // Apunta a accounts.spotify.com
+  private searchUrl = '/api/v1/search'; // Apunta a api.spotify.com/v1
+  private albumTracksUrlBase = '/api/v1/albums'; // Apunta a api.spotify.com/v1
+  // ---
+
   private accessToken = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {
@@ -28,9 +33,7 @@ export class SpotifyService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic ' + btoa(this.clientId + ':' + this.clientSecret)
     });
-
-    const body = new HttpParams()
-      .set('grant_type', 'client_credentials');
+    const body = new HttpParams().set('grant_type', 'client_credentials');
 
     this.http.post<SpotifyTokenResponse>(this.tokenUrl, body.toString(), { headers })
       .subscribe({
@@ -50,54 +53,18 @@ export class SpotifyService {
     ) as Observable<string>;
   }
 
-  public searchAlbums(query: string): Observable<any> {
-    return this.getValidToken().pipe(
-      switchMap(token => {
-        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
-        const params = new HttpParams().set('q', query).set('type', 'album').set('limit', '10'); 
-        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
-      })
-    );
-  }
-
-  public searchArtists(query: string): Observable<any> {
-    return this.getValidToken().pipe(
-      switchMap(token => {
-        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
-        const params = new HttpParams().set('q', query).set('type', 'artist').set('limit', '10'); 
-        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
-      })
-    );
-  }
-
-  public searchTracks(query: string): Observable<any> {
-    return this.getValidToken().pipe(
-      switchMap(token => {
-        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
-        const params = new HttpParams().set('q', query).set('type', 'track').set('limit', '10'); 
-        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
-      })
-    );
-  }
-
   public searchAll(query: string): Observable<any> {
-    
     if (!query) {
       return of({ albums: null, artists: null, tracks: null });
     }
-
     return this.getValidToken().pipe(
       switchMap(token => {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        });
-        
+        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
         const params = new HttpParams()
           .set('q', query)
           .set('type', 'album,artist,track')
           .set('limit', '8');
-
-        return this.http.get('https://api.spotify.com/v1/search', { headers, params });
+        return this.http.get(this.searchUrl, { headers, params });
       })
     );
   }
@@ -105,11 +72,8 @@ export class SpotifyService {
   public getAlbumTracks(albumId: string): Observable<any> {
     return this.getValidToken().pipe(
       switchMap(token => {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        });
-        
-        return this.http.get(`http://googleusercontent.com/spotify.com/6/${albumId}/tracks`, { headers });
+        const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+        return this.http.get(`${this.albumTracksUrlBase}/${albumId}/tracks`, { headers });
       })
     );
   }

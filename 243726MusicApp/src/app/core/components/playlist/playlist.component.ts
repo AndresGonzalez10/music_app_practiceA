@@ -7,7 +7,7 @@ import { Songs2Component } from '../songs2/songs2.component';
 @Component({
   selector: 'app-playlist',
   standalone: true, 
-  imports: [CommonModule, Songs2Component], 
+  imports: [CommonModule, Songs2Component],  
   templateUrl: './playlist.html',
   styleUrl: './playlist.css',
 })
