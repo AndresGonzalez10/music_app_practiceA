@@ -15,12 +15,10 @@ export class SpotifyService {
   
   private clientId = '43ee895f2568414488c00bd8fd722ca8';
   private clientSecret = '53d60a801e0142579d19b8f75dd730d9';
-
-  // --- URLs Actualizadas a la API real ---
-  private tokenUrl = '/api/token'; // Apunta a accounts.spotify.com
-  private searchUrl = '/api/v1/search'; // Apunta a api.spotify.com/v1
-  private albumTracksUrlBase = '/api/v1/albums'; // Apunta a api.spotify.com/v1
-  // ---
+  private tokenUrl = '/api/token'; 
+  private searchUrl = '/api/v1/search'; 
+  private albumTracksUrlBase = '/api/v1/albums'; 
+ 
 
   private accessToken = new BehaviorSubject<string | null>(null);
 
