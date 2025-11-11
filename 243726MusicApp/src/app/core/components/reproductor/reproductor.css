@@ -13,10 +13,7 @@
   transition: transform 0.3s ease-out;
   transform: translateX(0);
   box-sizing: border-box;
-  
-  /* CLAVE: El contenedor es una columna flex */
-  display: flex;
-  flex-direction: column;
+  overflow-y: auto; 
 }
 
 .player-container.hidden {
@@ -45,31 +42,22 @@
   filter: brightness(0) invert(1);
 }
 
-/* 1. SECCIÓN SUPERIOR */
 .player-main-content {
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex-shrink: 0; /* No se encoge */
   align-items: center;
 }
 
-/* DIVISOR */
 .divider {
   width: 100%;
   height: 1px;
   background-color: #70619a;
-  flex-shrink: 0; /* No se encoge */
 }
 
-/* 2. SECCIÓN INFERIOR (LISTA) */
-.player-playlist-area {
-  flex-grow: 1; /* ¡Toma todo el espacio restante! */
-  overflow-y: auto; /* Añade scroll solo a esta área */
-}
 
-/* Estilos del resto de elementos */
+
 .player-header {
   display: flex;
   justify-content: space-between;
