@@ -107,7 +107,7 @@ export class SpotifyService {
           'Authorization': `Bearer ${token}`
         });
         
-        return this.http.get(`https://api.spotify.com/v1/albums/${albumId}/tracks`, { headers });
+        return this.http.get(`http://googleusercontent.com/spotify.com/6/${albumId}/tracks`, { headers });
       })
     );
   }

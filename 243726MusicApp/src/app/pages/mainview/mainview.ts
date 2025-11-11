@@ -55,18 +55,19 @@ export class Mainview {
     );
   }
 
-  onAlbumClick(album: any): void {
+ onAlbumClick(album: any): void {
     this.spotifyService.getAlbumTracks(album.id).subscribe({
       next: (tracks) => {
         if (tracks && tracks.items && tracks.items.length > 0) {
-          
+          const fullTracks = tracks.items.map((track: any) => {
+            track.album = { images: album.images }; 
+            return track;
+          });
+
           this.playerService.clearPlaylist();
-          
-          const firstTrack = tracks.items[0];
-          this.playerService.playTrack(firstTrack);
-        
-          for (let i = 1; i < tracks.items.length; i++) {
-            this.playerService.addToPlaylist(tracks.items[i]);
+          this.playerService.playTrack(fullTracks[0]);
+          for (let i = 1; i < fullTracks.length; i++) {
+            this.playerService.addToPlaylist(fullTracks[i]);
           }
         }
       },

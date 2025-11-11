@@ -4,16 +4,16 @@ import { Subscription } from 'rxjs';
 import { PlayerService, Track } from '../../../services/player-service';
 import { ImageReproductorComponent } from '../image-reproductor/image-reproductor.component';
 import { ProgresBarComponent } from '../progres-bar/progres-bar.component';
-import { PlaylistComponent } from '../playlist/playlist.component';
+import { PlaylistComponent } from '../playlist/playlist.component'; 
 
 @Component({
   selector: 'app-reproductor',
   standalone: true,
   imports: [
-    CommonModule,
-    ImageReproductorComponent,
+    CommonModule, 
+    ImageReproductorComponent, 
     ProgresBarComponent,
-    PlaylistComponent
+    PlaylistComponent 
   ],
   templateUrl: './reproductor.html',
   styleUrls: ['./reproductor.css']
@@ -33,7 +33,7 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   public cardTitle: string = 'Song Name';
   public cardArtist: string = 'Artist Name';
   
-  public isPlayerVisible: boolean = true;
+  public isPlayerVisible: boolean = true; 
 
   constructor(
     private playerService: PlayerService,
@@ -52,7 +52,7 @@ export class ReproductorComponent implements OnInit, OnDestroy {
       }
     });
   }
-
+  
   ngOnDestroy(): void {
     this.playerSubscription?.unsubscribe();
   }
@@ -113,12 +113,10 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   showPlayer() { this.isPlayerVisible = true; }
 
   playPrevious(): void {
-    // TODO: Implement previous track functionality
     console.log('Previous track');
   }
 
   playNext(): void {
-    // TODO: Implement next track functionality
     console.log('Next track');
   }
 }
