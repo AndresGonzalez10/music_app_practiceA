@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="music-card" (click)="onClick()">
+    <div class="music-card" (click)="onCardClick()">
       <div class="card-image">
         <img *ngIf="imageUrl" [src]="imageUrl" [alt]="title">
         <div *ngIf="!imageUrl" class="placeholder-image"></div>
@@ -22,14 +22,14 @@ import { CommonModule } from '@angular/common';
 export class ImageAreaComponent {
   
   @Input() imageUrl: string = '';
-  @Input() title: string = 'Sin Título';
-  @Input() artist: string = 'Artista Desconocido';
-  @Input() albumData: any;
+  @Input() title: string = '';
+  @Input() artist: string = '';
+  
+  @Input() albumData: any; 
   
   @Output() albumClick = new EventEmitter<any>();
 
-  onClick(): void {
+  onCardClick(): void {
     this.albumClick.emit(this.albumData);
   }
-
 }

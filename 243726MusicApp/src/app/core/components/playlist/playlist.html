@@ -4,7 +4,15 @@
     <h2>Lista de Reproduccion</h2>
   </div>
 
-  <ul class="song-list">
-    <app-songs2></app-songs2>
+  <ul class="song-list" *ngIf="playlist$ | async as playlist">
+    <app-songs2
+      *ngFor="let track of playlist"
+      [trackData]="track"
+      [imageUrl]="track.albumImageUrl"
+      [songName]="track.name"
+      [artistName]="track.artistName"
+      [durationMs]="track.duration_ms">
+    </app-songs2>
   </ul>
+  
 </div>

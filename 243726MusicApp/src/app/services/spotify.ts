@@ -59,6 +59,7 @@ export class SpotifyService {
       })
     );
   }
+
   public searchArtists(query: string): Observable<any> {
     return this.getValidToken().pipe(
       switchMap(token => {
@@ -68,6 +69,7 @@ export class SpotifyService {
       })
     );
   }
+
   public searchTracks(query: string): Observable<any> {
     return this.getValidToken().pipe(
       switchMap(token => {
