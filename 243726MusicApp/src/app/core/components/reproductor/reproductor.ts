@@ -18,7 +18,7 @@ import { PlaylistComponent } from '../playlist/playlist.component';
   templateUrl: './reproductor.html',
   styleUrls: ['./reproductor.css']
 })
-export class ReproductorComponent implements OnInit, OnDestroy {
+export class Reproductor implements OnInit, OnDestroy {
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   
@@ -113,12 +113,10 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   showPlayer() { this.isPlayerVisible = true; }
 
   playPrevious(): void {
-    // TODO: Implement previous track functionality
     console.log('Previous track');
   }
 
   playNext(): void {
-    // TODO: Implement next track functionality
     console.log('Next track');
   }
 }

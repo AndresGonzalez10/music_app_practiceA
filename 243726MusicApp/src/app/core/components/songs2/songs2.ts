@@ -23,7 +23,7 @@ import { PlayerService } from '../../../services/player-service';
   `,
   styleUrls: ['./songs2.css']
 })
-export class Songs2Component {
+export class Songs2 {
   
   @Input() trackData: any; 
   @Input() imageUrl: string = '';

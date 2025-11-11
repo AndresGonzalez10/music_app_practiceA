@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./progres-bar.css'],
   changeDetection: ChangeDetectionStrategy.OnPush 
 })
-export class ProgresBarComponent {
+export class ProgresBar {
 
   @Input() currentTime: number = 0;
   @Input() duration: number = 0;  
