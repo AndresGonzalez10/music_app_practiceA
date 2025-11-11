@@ -1,41 +1,36 @@
 <div class="app-layout">
-  
   <app-nanv-bar></app-nanv-bar>
-
   <main class="content-area">
-    
     <h2>Albumes</h2>
     <div class="horizontal-scroll-container" *ngIf="albums$ | async as albums">
-      <app-image-area 
+      <app-image-area
         *ngFor="let album of albums.items"
-        [imageUrl]="album.images[0].url" 
+        [imageUrl]="album.images[0].url"
         [title]="album.name"
         [artist]="album.artists[0].name"
         [albumData]="album"
         (albumClick)="onAlbumClick($event)">
       </app-image-area>
     </div>
-    
     <h2>Artistas</h2>
     <div class="horizontal-scroll-container" *ngIf="artists$ | async as artists">
-      <app-image-artis 
+      <app-image-artis
         *ngFor="let artist of artists.items"
         [imageUrl]="artist.images[0]?.url || ''"
         [artistName]="artist.name">
       </app-image-artis>
     </div>
-    
     <h2>Canciones</h2>
     <div class="vertical-list-container" *ngIf="tracks$ | async as tracks">
-      <app-songs2 
-        *ngFor="let track of tracks.items"
-        [trackData]="track" [imageUrl]="track.album.images[0]?.url || ''"
+      <app-songs2
+        *ngFor="let track of tracks"
+        [trackData]="track"
+        [imageUrl]="track.albumImageUrl"
         [songName]="track.name"
-        [artistName]="track.artists[0].name"
+        [artistName]="track.artistName"
         [durationMs]="track.duration_ms">
       </app-songs2>
     </div>
-
   </main>
-<app-reproductor></app-reproductor>
 </div>
+<app-reproductor></app-reproductor>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlayerService } from '../../../services/player-service';
+import { PlayerService, Track } from '../../../services/player-service';
 
 @Component({
   selector: 'app-songs2',
@@ -25,7 +25,7 @@ import { PlayerService } from '../../../services/player-service';
 })
 export class Songs2Component {
   
-  @Input() trackData: any; 
+  @Input() trackData!: Track; 
   @Input() imageUrl: string = '';
   @Input() songName: string = 'Canción Desconocida';
   @Input() artistName: string = 'Artista Desconocido';

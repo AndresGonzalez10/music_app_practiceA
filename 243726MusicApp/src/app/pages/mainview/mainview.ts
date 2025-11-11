@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs'; 
 import { map, switchMap } from 'rxjs/operators';
 import { SpotifyService } from '../../services/spotify';
 import { SearchService } from '../../services/search';
-import { PlayerService } from '../../services/player-service';
+import { PlayerService, Track } from '../../services/player-service';
+import { LocalMusicService } from '../../services/local-music';
 import { ImageAreaComponent } from '../../core/components/image-area/image-area.component';
 import { ImageArtisComponent } from '../../core/components/image-artis/image-artis.component';
 import { NanvBar } from "../../core/components/nanv-bar/nanv-bar";
@@ -13,7 +14,7 @@ import { Songs2Component } from "../../core/components/songs2/songs2.component";
 
 @Component({
   selector: 'app-mainview',
-  standalone: true,
+  standalone: true, 
   imports: [
     CommonModule,
     ImageAreaComponent,
@@ -27,41 +28,61 @@ import { Songs2Component } from "../../core/components/songs2/songs2.component";
 })
 export class Mainview {
   
-  private results$: Observable<any>;
   public albums$: Observable<any>;
   public artists$: Observable<any>;
-  public tracks$: Observable<any>;
+  public tracks$: Observable<Track[]>;
 
   constructor(
     private spotifyService: SpotifyService,
     private searchService: SearchService,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private localMusicService: LocalMusicService
   ) {
     
-    this.results$ = this.searchService.searchTerm$.pipe(
+    const searchTerm$ = this.searchService.searchTerm$;
+
+    const spotifyResults$ = searchTerm$.pipe(
       switchMap(term => this.spotifyService.searchAll(term))
     );
 
-    this.albums$ = this.results$.pipe(
-      map(results => results.albums)
+    const localResults$ = searchTerm$.pipe(
+      switchMap(term => this.localMusicService.searchLocalTracks(term))
     );
 
-    this.artists$ = this.results$.pipe(
-      map(results => results.artists)
-    );
-    
-    this.tracks$ = this.results$.pipe(
-      map(results => results.tracks)
+    this.albums$ = spotifyResults$.pipe(map(results => results.albums));
+    this.artists$ = spotifyResults$.pipe(map(results => results.artists));
+
+    this.tracks$ = combineLatest([spotifyResults$, localResults$]).pipe(
+      map(([spotifyResults, localTracks]) => {
+        
+        const spotifyTracks: Track[] = (spotifyResults.tracks?.items || []).map((track: any) => ({
+          name: track.name,
+          artistName: track.artists[0].name,
+          albumImageUrl: track.album.images[0].url,
+          preview_url: track.preview_url,
+          duration_ms: track.duration_ms,
+          spotifyData: track
+        }));
+
+        return [...localTracks, ...spotifyTracks];
+      })
     );
   }
 
- onAlbumClick(album: any): void {
+  onAlbumClick(album: any): void {
     this.spotifyService.getAlbumTracks(album.id).subscribe({
       next: (tracks) => {
         if (tracks && tracks.items && tracks.items.length > 0) {
-          const fullTracks = tracks.items.map((track: any) => {
-            track.album = { images: album.images }; 
-            return track;
+          
+          const fullTracks: Track[] = tracks.items.map((track: any) => {
+            return {
+              name: track.name,
+              artistName: track.artists[0].name,
+              albumImageUrl: album.images[0].url,
+              preview_url: track.preview_url,
+              duration_ms: track.duration_ms,
+              spotifyData: track
+            };
           });
 
           this.playerService.clearPlaylist();
@@ -71,9 +92,7 @@ export class Mainview {
           }
         }
       },
-      error: (error) => {
-        console.error('Error loading album tracks:', error);
-      }
+      error: (error) => console.error('Error loading album tracks:', error)
     });
   }
 }
