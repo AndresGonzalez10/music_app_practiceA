@@ -23,15 +23,14 @@ export class LocalMusicService {
       preview_url: "/Assets/audio/beso.mp3", 
       duration_ms: 211000 
     },
-
   ];
 
-  // Convertimos el array en un Observable
   private localTracks$ = new BehaviorSubject<Track[]>(this.localTracks);
 
   public searchLocalTracks(term: string): Observable<Track[]> {
+    
     if (!term) {
-      return this.localTracks$.asObservable();
+      return of([]);
     }
 
     const lowerCaseTerm = term.toLowerCase();
