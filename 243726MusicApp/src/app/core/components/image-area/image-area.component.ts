@@ -5,18 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-image-area',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="music-card" (click)="onCardClick()">
-      <div class="card-image">
-        <img *ngIf="imageUrl" [src]="imageUrl" [alt]="title">
-        <div *ngIf="!imageUrl" class="placeholder-image"></div>
-      </div>
-      <div class="card-info">
-        <span class="card-title">{{ title }}</span>
-        <span class="card-subtitle">{{ artist }}</span>
-      </div>
-    </div>
-  `,
+  templateUrl: './image-area.html',
   styleUrls: ['./image-area.css']
 })
 export class ImageAreaComponent {

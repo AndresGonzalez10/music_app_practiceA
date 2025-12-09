@@ -1,9 +1,11 @@
 <div class="music-card">
-  <div class="card-image">
-    <div class="placeholder-image"></div>
-  </div>
-  <div class="card-info">
-    <span class="card-title">Song Name</span>
-    <span class="card-subtitle">Artist Name</span>
-  </div>
-</div>  
+<div class="music-card">
+      <div class="card-image">
+        <img *ngIf="imageUrl" [src]="imageUrl" [alt]="title">
+        <div *ngIf="!imageUrl" class="placeholder-image"></div>
+      </div>
+      <div class="card-info">
+        <span class="card-title">{{ title }}</span>
+        <span class="card-subtitle">{{ artist }}</span>
+      </div>
+</div>

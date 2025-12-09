@@ -5,18 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-image-artis',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="artist-card-circular">
-      <div class="artist-image">
-        <img *ngIf="imageUrl" [src]="imageUrl" [alt]="artistName">
-        <div *ngIf="!imageUrl" class="placeholder-artist-image"></div>
-      </div>
-      <div class="artist-info">
-        <span class="artist-name">{{ artistName }}</span>
-      </div>
-    </div>
-  `,
-  
+  templateUrl: './image-artis.html',
   styleUrls: ['./image-artis.css'] 
 })
 export class ImageArtisComponent {

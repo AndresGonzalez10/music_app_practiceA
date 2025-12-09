@@ -1,15 +1,13 @@
-<div class="song-item-container">
-  
-  <div class="song-artwork-placeholder"></div>
-
-  <div class="song-info">
-    <div class="song-title-wrapper">
-      <strong>Song Name</strong>
-      <img src="/Assets/Plus.png" alt="Añadir" class="plus-icon">
-    </div>
-    <span>Artist Name</span>
-  </div>
-
-  <span class="song-duration">00:00</span>
-
+<div class="song-item-container" (click)="onPlay()">
+      <div class="song-artwork-placeholder">
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ songName }}" class="song-artwork-image">
+      </div>
+      <div class="song-info">
+        <div class="song-title-wrapper">
+          <strong>{{ songName }}</strong>
+          <img src="/Assets/Plus.png" alt="Añadir" class="plus-icon">
+        </div>
+        <span>{{ artistName }}</span>
+      </div>
+      <span class="song-duration">{{ duration }}</span>
 </div>

@@ -1,8 +1,9 @@
 <div class="artist-card-circular">
-  <div class="artist-image">
-    <div class="placeholder-artist-image"></div>
-  </div>
-  <div class="artist-info">
-    <span class="artist-name">Artist Name</span>
-  </div>
+      <div class="artist-image">
+        <img *ngIf="imageUrl" [src]="imageUrl" [alt]="artistName">
+        <div *ngIf="!imageUrl" class="placeholder-artist-image"></div>
+      </div>
+      <div class="artist-info">
+        <span class="artist-name">{{ artistName }}</span>
+      </div>
 </div>
