@@ -2,6 +2,8 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
+import { NanvBarComponent } from './core/components/nanv-bar/nanv-bar.component';
+import { ReproductorComponent } from './core/components/reproductor/reproductor.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -9,5 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient()
+    ,NanvBarComponent
+    ,ReproductorComponent
   ]
 };
