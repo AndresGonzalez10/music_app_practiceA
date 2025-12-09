@@ -13,7 +13,6 @@ export class ProgresBarComponent {
 
   @Input() currentTime: number = 0;
   @Input() duration: number = 0;
-  
   @Output() seek = new EventEmitter<number>();
 
   formatTime(timeInSeconds: number): string {

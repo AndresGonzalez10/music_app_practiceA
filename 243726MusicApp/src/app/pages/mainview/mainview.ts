@@ -8,7 +8,7 @@ import { PlayerService, Track } from '../../services/player-service';
 import { LocalMusicService } from '../../services/local-music';
 import { ImageAreaComponent } from '../../core/components/image-area/image-area.component';
 import { ImageArtisComponent } from '../../core/components/image-artis/image-artis.component';
-import { NanvBar } from "../../core/components/nanv-bar/nanv-bar";
+import { NanvBarComponent } from "../../core/components/nanv-bar/nanv-bar.component";
 import { ReproductorComponent } from "../../core/components/reproductor/reproductor.component";
 import { Songs2Component } from "../../core/components/songs2/songs2.component";
 
@@ -19,7 +19,7 @@ import { Songs2Component } from "../../core/components/songs2/songs2.component";
     CommonModule,
     ImageAreaComponent,
     ImageArtisComponent,
-    NanvBar,
+    NanvBarComponent,
     ReproductorComponent,
     Songs2Component
   ],

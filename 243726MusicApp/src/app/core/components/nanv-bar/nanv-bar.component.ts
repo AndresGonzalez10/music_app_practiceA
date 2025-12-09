@@ -13,6 +13,6 @@ import { SearchComponent } from '../search/search.component';
   styleUrl: './nanv-bar.css',
 })
 
-export class NanvBar {
+export class NanvBarComponent {
 
 }
