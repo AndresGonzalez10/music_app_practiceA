@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { PlayerService, Track } from '../../../services/player-service';
+import { PlayerService, Track } from '../../../services/player.service';
 import { ImageReproductorComponent } from '../image-reproductor/image-reproductor.component';
 import { ProgresBarComponent } from '../progres-bar/progres-bar.component';
 import { PlaylistComponent } from '../playlist/playlist.component'; 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { SearchService } from '../../../services/search';
+import { SearchService } from '../../../services/search.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({

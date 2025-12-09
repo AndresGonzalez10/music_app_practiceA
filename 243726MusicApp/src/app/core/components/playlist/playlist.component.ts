@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { PlayerService, Track } from '../../../services/player-service';
+import { PlayerService, Track } from '../../../services/player.service';
 import { Songs2Component } from '../songs2/songs2.component'; 
 
 @Component({

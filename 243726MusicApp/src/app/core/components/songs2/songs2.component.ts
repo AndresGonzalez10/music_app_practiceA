@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlayerService, Track } from '../../../services/player-service';
+import { PlayerService, Track } from '../../../services/player.service';
 
 @Component({
   selector: 'app-songs2',
