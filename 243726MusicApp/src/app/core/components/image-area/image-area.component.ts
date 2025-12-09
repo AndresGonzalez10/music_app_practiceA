@@ -24,9 +24,7 @@ export class ImageAreaComponent {
   @Input() imageUrl: string = '';
   @Input() title: string = '';
   @Input() artist: string = '';
-  
   @Input() albumData: any; 
-  
   @Output() albumClick = new EventEmitter<any>();
 
   onCardClick(): void {

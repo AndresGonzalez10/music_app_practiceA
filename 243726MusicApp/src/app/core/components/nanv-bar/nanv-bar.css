@@ -34,12 +34,12 @@
   display: block;
   width: 100%; 
   padding: 12px 20px;
-  border-radius: 25px;
+  border-radius: 14px;
   background-color: #333333;
   color: #ffffff;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
   transition: background-color 0.3s ease;
   box-sizing: border-box;

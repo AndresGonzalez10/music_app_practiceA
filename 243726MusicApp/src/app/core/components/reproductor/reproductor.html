@@ -1,7 +1,9 @@
 <audio 
   #audioPlayer
+  [src]="currentTrack?.preview_url"
   (timeupdate)="onTimeUpdate()"
-  (loadedmetadata)="onLoadedMetadata()">
+  (loadedmetadata)="onLoadedMetadata()"
+  (ended)="onEnded()"> </audio>>
 </audio>
 
 <div class="deploy-tab" [hidden]="isPlayerVisible" (click)="showPlayer()">

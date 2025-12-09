@@ -40,14 +40,21 @@ export class ReproductorComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.playerSubscription = this.playerService.currentTrack$.subscribe(track => {
       if (track) {
         this.currentTrack = track;
         this.cardTitle = track.name;
         this.cardArtist = track.artistName;
         this.cardImageUrl = track.albumImageUrl;
-        
+        if (this.audioPlayer) {
+            this.audioPlayer.nativeElement.pause(); 
+            this.audioPlayer.nativeElement.currentTime = 0; 
+        }
+        this.currentTime = 0;
+        this.duration = 0; 
+        this.isPlaying = false; 
+        this.cdr.detectChanges(); 
         setTimeout(() => this.loadTrack(track.preview_url), 0);
       }
     });
@@ -100,10 +107,17 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   }
 
   onTimeUpdate(): void {
-    this.currentTime = this.audioPlayer.nativeElement.currentTime;
+    if (this.audioPlayer && this.audioPlayer.nativeElement) {
+       this.currentTime = this.audioPlayer.nativeElement.currentTime;
+       this.cdr.detectChanges(); 
+    }
+  }
+  onEnded(): void {
+    this.isPlaying = false;
+    this.currentTime = 0;
+    this.audioPlayer.nativeElement.currentTime = 0;
     this.cdr.detectChanges();
   }
-
   onLoadedMetadata(): void {
     this.duration = this.audioPlayer.nativeElement.duration;
     this.cdr.detectChanges();
@@ -125,4 +139,7 @@ export class ReproductorComponent implements OnInit, OnDestroy {
   playNext(): void {
     this.playerService.playNext();
   }
+
+  
 }
+
